@@ -16,13 +16,12 @@ def topFivePosts():
     limit 5""")
 
     results = query_job.result()
-    count = 0
-    for row in results:
-        print(row)
+    # for row in results:
+    #     print(row)
         # count += 1
         # if count == 5:
         #     break
     
-    return results
+    return results.to_dataframe()
 
 # topFivePosts()

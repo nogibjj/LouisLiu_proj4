@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 import uvicorn
 from gcpconn import topFivePosts
+from fastapi.responses import PlainTextResponse
 
 app = FastAPI()
 
@@ -10,21 +11,14 @@ async def root():
     return {"message": "Hello"}
 
 
-@app.get("/topfive")
+@app.get("/topfive", response_class=PlainTextResponse)
 async def topfive():
     """Print the top five ranking stackoverflow posts"""
 
     result = topFivePosts()
-
-    return {"result: ": result}
-
-
-# @app.get("/query")
-# async def query():
-#     """Execute a SQL query"""
-
-#     result = querydb()
-#     return {"result": result}
+    print(result)
+    # return {result.to_json(orient='table')}
+    return result.to_string()
 
 
 if __name__ == "__main__":
