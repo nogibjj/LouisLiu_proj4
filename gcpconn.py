@@ -1,7 +1,7 @@
 from google.cloud import bigquery
 from google.oauth2 import service_account
 credentials = service_account.Credentials.from_service_account_file(
-'/workspaces/LouisLiu_proj4/fresh-span-361719-e4e6a5688c1e.json')
+'/app/fresh-span-361719-e4e6a5688c1e.json')
 
 project_id = 'fresh-span-361719'
 client = bigquery.Client(credentials= credentials,project=project_id)
@@ -16,12 +16,13 @@ def topFivePosts():
     limit 5""")
 
     results = query_job.result()
-    # for row in results:
-    #     print(row)
-        # count += 1
-        # if count == 5:
-        #     break
+    count = 0
+    for row in results:
+        print(row)
+        count += 1
+        if count == 5:
+            break
     
     return results.to_dataframe()
 
-# topFivePosts()
+topFivePosts()

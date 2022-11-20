@@ -1,11 +1,7 @@
 black
 pylint
 pytest
-databricks
-databricks-cli
 ipython
-databricks-sql-connector
-databricks-connect==10.4.*
 fastapi
 uvicorn[standard]
 dask
@@ -18,3 +14,4 @@ click
 google-cloud-bigquery
 google-auth
 db-dtypes
+gcloud
